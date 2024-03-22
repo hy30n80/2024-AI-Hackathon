@@ -8,6 +8,10 @@ load_dotenv()
 with open("openai.txt") as f:
     docs = f.read()
 
+
+#task : 사용자 입력
+#instruction : 참고 자료 (.txt)
+
 template = """Based on the following instrutions, help me write a good prompt TEMPLATE for the following task:
 
 {task}
@@ -25,5 +29,5 @@ prompt = ChatPromptTemplate.from_messages([("system", template)]).partial(
 )
 
 chain = (
-    prompt | ChatOpenAI(model="gpt-4-1106-preview", temperature=0) | StrOutputParser()
+    prompt | ChatOpenAI(model="gpt-4-turbo-preview", temperature=0) | StrOutputParser()
 )
